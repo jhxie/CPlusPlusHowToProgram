@@ -1,6 +1,9 @@
 # Change Log
 This document records all notable changes to CPlusPlusHowToProgram.  
 
+## 0.3 (2017-12-8)
+* Synchronized the version number with the progress of the reference book.
+
 ## 0.2 (2017-12-8)
 * Removed the semantic versioning scheme due to its applicability.
 

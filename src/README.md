@@ -1,4 +1,6 @@
 # Chapter Catalogue
+Sections named *Exercises* and *Making a Difference* at the end of each chapter
+are skipped until chapter 4.
 
 ## 2. Introduction to C++ Programming, Input/Output and Operators
 Introduction to basic concepts of C++.
