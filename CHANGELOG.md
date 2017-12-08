@@ -1,8 +1,8 @@
 # Change Log
 This document records all notable changes to CPlusPlusHowToProgram.  
-This project adheres to [Semantic Versioning](http://semver.org/).
 
-## 0.2 (Upcoming)
+## 0.2 (2017-12-8)
+* Removed the semantic versioning scheme due to its applicability.
 
 ## 0.1 (2017-12-7)
 * Added two samples on the usage of *unique_ptr* and *shared_ptr*.
