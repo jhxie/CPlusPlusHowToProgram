@@ -14,10 +14,19 @@ All the source files in this lesson can be located below.
 Introduction to object oriented programming foundations.
 
 ### Source Listing
-All the source files in this lesson can be located below.
 
 * [AccountTest](3/AccountTest.cpp)
 
 ## 4. Algorithm Development and Control Statements: Part 1
 Birds' eye view of foundational control statements; sequence, selection, and
 iteration statements are demonstrated.
+
+### Diagram Listing
+* [WhileStatement](../doc/4/WhileStatement.gv)
+
+### Source Listing
+
+* [Analysis](4/Analysis.cpp)
+* [ClassAverageCounter](4/ClassAverageCounter.cpp)
+* [ClassAverageSentinel](4/ClassAverageSentinel.cpp)
+* [StudentTest](4/StudentTest.cpp)

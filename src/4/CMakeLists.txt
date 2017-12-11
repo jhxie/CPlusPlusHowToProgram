@@ -8,6 +8,9 @@
 list(
     APPEND
     executable_list
+    "Analysis.cpp"
+    "ClassAverageCounter.cpp"
+    "ClassAverageSentinel.cpp"
     "StudentTest.cpp"
 )
 
