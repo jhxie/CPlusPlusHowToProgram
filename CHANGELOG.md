@@ -1,5 +1,12 @@
 # Change Log
-This document records all notable changes to CPlusPlusHowToProgram.  
+This document records all notable changes to *CPlusPlusHowToProgram*.  
+
+## 0.4 (2017-12-11)
+* Completed the samples shown in *Chapter 4*.
+
+* Implemented a *CMake* module to handle *GraphViz* processing.
+
+* Reproduced an iteration diagram shown in the chapter with *GraphViz*.
 
 ## 0.3 (2017-12-8)
 * Synchronized the version number with the progress of the reference book.
