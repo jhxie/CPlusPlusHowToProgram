@@ -1,6 +1,6 @@
 # Chapter Catalogue
 Sections named *Exercises* and *Making a Difference* at the end of each chapter
-are skipped until chapter 4.
+are skipped until chapter 6.
 
 ## 2. Introduction to C++ Programming, Input/Output and Operators
 Introduction to basic concepts of C++.
@@ -17,3 +17,7 @@ Introduction to object oriented programming foundations.
 All the source files in this lesson can be located below.
 
 * [AccountTest](3/AccountTest.cpp)
+
+## 4. Algorithm Development and Control Statements: Part 1
+Birds' eye view of foundational control statements; sequence, selection, and
+iteration statements are demonstrated.

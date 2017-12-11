@@ -19,7 +19,7 @@ function(add_executable_list)
             PRINT_DEBUG_INFO=1
         )
     endif()
-    target_link_libraries(${exe_target} "m")
+    # target_link_libraries(${exe_target} "m")
 endfunction()
 
 # Compile all the source files with base name set as the output target name;

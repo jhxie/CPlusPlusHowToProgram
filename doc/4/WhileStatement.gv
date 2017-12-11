@@ -1,0 +1,48 @@
+/*
+   UML Activity Diagram for a 'while' statement.
+*/
+strict digraph "WhileStatement" {
+    graph [compound="true", rankdir="TB"];
+
+    subgraph "main" {
+        /* Initial and final state symbols. */
+        node [fillcolor="black", label="", shape="circle", style="filled"];
+        Start;
+        End [peripheries="2"];
+
+        /* Merge and Decision symbols. */
+        node [fillcolor="white", orientation="45", shape="square"];
+        Merge, Decision;
+
+        /* Action state symbol. */
+        node [
+            fillcolor="steelblue1",
+            label="product *= 3",
+            orientation="0",
+            peripheries="2",
+            shape="rect",
+            style="filled,rounded"
+        ];
+        Condition;
+    }
+
+    subgraph "note" {
+            /* Merge and Decision note symbols. */
+        node [
+            fillcolor="steelblue1",
+            peripheries="0",
+            shape="note",
+            style="filled"
+        ];
+        MergeNote [label="merge"];
+        DecisionNote [label="decision"];
+    }
+
+    Start -> Merge -> Decision;
+    Decision -> Condition [label="[product <= 100]"];
+    Condition -> Merge;
+    Decision -> End [label="[product > 100]"];
+
+    MergeNote -> Merge [arrowhead="none" style="dashed"];
+    DecisionNote -> Decision [arrowhead="none" style="dashed"];
+}
