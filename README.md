@@ -6,25 +6,25 @@ book.
 * C++ Compiler with ISO C++ 14 Support (Clang **3.5** / GCC **6.1** / Visual C++ **14.0**)
 * [CMake](https://cmake.org/) Build System (**3.3.2**)
 
-### **Ubuntu** (>= 17.10)  
+**Ubuntu** (17.10)  
 ```bash
 sudo apt-get install build-essential cmake cmake-extras extra-cmake-modules
 ```
 
-### Windows 10  
+**Windows 10**  
 Follow the [documentation][VS2017] listed to install *Visual Studio*, make sure
 workloads *Windows desktop development with C++* and
 *Linux development with C++* are installed.
 
 ## Build Instructions
-### **Ubuntu** (>= 17.10)  
+**Ubuntu** (17.10)  
 Change working directory to where the source directory resides and then issue:
 ```bash
 mkdir build && pushd !$
 cmake .. && make -j$(nproc)
 ```
 
-### Windows 10  
+**Windows 10**  
 If Visual Studio 2017 is installed, the project can be directly imported into
 the *IDE* without generating solution or project files by following the
 following steps:
@@ -46,7 +46,7 @@ correct installed version should be generated inside *build* sub-directory;
 simply open this file and build it with the *IDE* as usual.
 
 ## Getting Started
-### **Ubuntu** (>= 17.10)  
+**Ubuntu** (17.10)  
 To run the compiled executables, issue commands similar to the following:
 ```bash
 pushd src
@@ -59,10 +59,10 @@ to the original directory:
 cd -2
 ```
 
-### Windows 10  
+**Windows 10**  
 If Visual Studio 2017 is being used, right click the translation unit that
-needs to be executed and select *Debug*. Otherwise, follow the usual debug
-instructions as it requires in the relevant version.
+needs to be executed in *Solution Explorer* and select *Debug*. Otherwise, follow
+the usual debug instructions as it requires in the relevant version.
 
 ## License
 Copyright © 2017 - 2018 Jiahui Xie  
