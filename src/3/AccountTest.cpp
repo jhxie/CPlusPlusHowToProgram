@@ -13,31 +13,31 @@ int main(void)
     int depositAmount;
 
     // Display initial balance of each object.
-    cout << "account1: " << account1.getName() << " balance is $"
-        << account1.getBalance() << "\n";
-    cout << "account2: " << account2.getName() << " balance is $"
-        << account2.getBalance();
+    cout << "account1: " << account1.GetName() << " balance is $"
+        << account1.GetBalance() << "\n";
+    cout << "account2: " << account2.GetName() << " balance is $"
+        << account2.GetBalance();
 
     cout << "\n\nEnter deposit amount for account1: ";
     cin >> depositAmount;
     cout << "Adding $" << depositAmount << " to account1's balance\n\n";
-    account1.deposit(depositAmount);
+    account1.Deposit(depositAmount);
 
     // Display balances.
-    cout << "account1: " << account1.getName() << " balance is $"
-        << account1.getBalance() << "\n";
-    cout << "account2: " << account2.getName() << " balance is $"
-        << account2.getBalance();
+    cout << "account1: " << account1.GetName() << " balance is $"
+        << account1.GetBalance() << "\n";
+    cout << "account2: " << account2.GetName() << " balance is $"
+        << account2.GetBalance();
 
     cout << "\n\nEnter deposit amount for account2: ";
     cin >> depositAmount;
     cout << "Adding $" << depositAmount << " to account2's balance\n\n";
-    account2.deposit(depositAmount);
+    account2.Deposit(depositAmount);
 
     // Display balances.
-    cout << "account1: " << account1.getName() << " balance is $"
-        << account1.getBalance() << "\n";
-    cout << "account2: " << account2.getName() << " balance is $"
-        << account2.getBalance() << endl;
+    cout << "account1: " << account1.GetName() << " balance is $"
+        << account1.GetBalance() << "\n";
+    cout << "account2: " << account2.GetName() << " balance is $"
+        << account2.GetBalance() << endl;
     return 0;
 }

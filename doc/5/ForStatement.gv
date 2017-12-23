@@ -1,0 +1,57 @@
+/*
+   5.4
+   UML activity diagram for the 'for' statement.
+*/
+strict digraph "ForStatement" {
+    subgraph "main" {
+        /* Initial and final state symbols. */
+        node [fillcolor="black", label="", shape="circle", style="filled"];
+        Start;
+        End [peripheries="2"];
+
+        /* Merge and Decision symbols. */
+        node [fillcolor="white", orientation="45", shape="square"];
+        Merge, Decision;
+
+        /* Action state symbol. */
+        node [
+            fillcolor="steelblue1",
+            orientation="0",
+            peripheries="2",
+            shape="rect",
+            style="filled,rounded"
+        ];
+        Initialization [label="Initialize control variable"];
+        Display [label="Display the counter value"];
+        Increment [label="Increment the control variable"];
+    }
+
+    subgraph "note" {
+        /*
+           Note symbols for initilization, decision, display, and increment.
+        */
+        node [
+            fillcolor="steelblue1",
+            peripheries="0",
+            shape="note",
+            style="filled"
+        ];
+        InitializationNote [label="unsigned int counter{1}"];
+        DecisionNote [label="Determine whether looping should continue"];
+        DisplayNote [label="cout << counter << \" \""];
+        IncrementNote [label="++counter"];
+    }
+
+    /* Edges within "main" cluster. */
+    Start -> Initialization -> Merge -> Decision;
+    Decision -> Display [label="[counter <= 10]"];
+    Decision -> End [label="[counter > 10]"];
+    Display -> Increment -> Merge;
+
+    /* Edges across "main" and "note" cluster. */
+    edge [arrowhead="none" style="dashed"];
+    Initialization -> InitializationNote;
+    Decision -> DecisionNote;
+    Display -> DisplayNote;
+    Increment -> IncrementNote;
+}

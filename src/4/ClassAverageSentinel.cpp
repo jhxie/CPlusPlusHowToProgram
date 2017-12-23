@@ -13,13 +13,13 @@ int main(void)
     // Initialization phase.
     int total {0}; // sum of grades
     int grade {-1};
-    unsigned int gradeCounter {0}; // number of grades entered so far
+    unsigned int grade_counter {0}; // number of grades entered so far
 
     // Processing phase.
     do {
         if (grade != -1) {
             total += grade;
-            gradeCounter++;
+            grade_counter++;
         }
         // Prompt for input and read next value from user
         cout << "Enter grade or -1 to quit: ";
@@ -27,12 +27,12 @@ int main(void)
     } while (grade != -1);
 
     // Termination phase.
-    if (gradeCounter != 0) {
-        double average {static_cast<double>(total) / gradeCounter};
+    if (grade_counter != 0) {
+        double average {static_cast<double>(total) / grade_counter};
 
         // Display total and average (with two digits of precision)
         cout \
-            << "\nTotal of the " << gradeCounter
+            << "\nTotal of the " << grade_counter
             << " grades entered is " << total;
         // NOTE:
         // Without the 'fixed' stream manipulator double values without

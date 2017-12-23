@@ -1,0 +1,53 @@
+/*
+   5.10
+   do...while iteration statement UML activity diagram.
+*/
+strict digraph "DoWhileStatement" {
+    subgraph "main" {
+        /* Initial and final state symbols. */
+        node [fillcolor="black", label="", shape="circle", style="filled"];
+        Start;
+        End [peripheries="2"];
+
+        /* Merge and Decision symbols. */
+        node [fillcolor="white", orientation="45", shape="square"];
+        Merge, Decision;
+
+        /* Action state symbols. */
+        node [
+            fillcolor="steelblue1",
+            orientation="0",
+            peripheries="2",
+            shape="rect",
+            style="filled,rounded"
+        ];
+        Display [label="Display the counter value"];
+        Increment [label="Increment the control variable"];
+    }
+
+    subgraph "note" {
+        /*
+           Note symbols for initilization, decision, display, and increment.
+        */
+        node [
+            fillcolor="steelblue1",
+            peripheries="0",
+            shape="note",
+            style="filled"
+        ];
+        DisplayNote [label="cout << counter << \" \""];
+        IncrementNote [label="++counter"];
+        DecisionNote [label="Determine whether looping should continue"];
+    }
+
+    /* Edges within "main" cluster. */
+    Start -> Merge -> Display -> Increment -> Decision;
+    Decision -> End [label="[counter > 10]"];
+    Decision -> Merge [label="[counter <= 10]"];
+
+    /* Edges across "main" and "note" cluster. */
+    edge [arrowhead="none", style="dashed"];
+    Display -> DisplayNote;
+    Increment -> IncrementNote;
+    Decision -> DecisionNote;
+}

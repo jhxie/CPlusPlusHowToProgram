@@ -5,11 +5,21 @@
 # SET(BUILD_SHARED_LIBRARIES OFF)
 # SET(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++ -static")
 
-# list(APPEND
-#     executable_list
-# )
+list(APPEND
+    executable_list
+    "BreakTest.cpp"
+    "ContinueTest.cpp"
+    "DoWhileTest.cpp"
+    "ForCounter.cpp"
+    "Interest.cpp"
+    "InterestPrimitive.cpp"
+    "LetterGrades.cpp"
+    "LogicalOperators.cpp"
+    "Sum.cpp"
+    "WhileCounter.cpp"
+)
 
-# add_multiple_executable_list(${executable_list})
+add_multiple_executable_list(${executable_list})
 # target_link_libraries(main ${CMAKE_THREAD_LIBS_INIT})
 # install(TARGETS main
 # RUNTIME DESTINATION /usr/bin      COMPONENT Runtime)

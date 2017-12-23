@@ -1,7 +1,6 @@
-# list(
-#     APPEND
-#     graphviz_list
-#     "WhileStatement.gv"
-# )
-#
-# add_graphviz_target(${graphviz_list})
+list(
+    APPEND
+    graphviz_list
+)
+
+#add_multiple_graphviz_targets(${graphviz_list})

@@ -12,16 +12,16 @@ int main(void)
     int average {0};
     int total {0};
     int grade {0};
-    unsigned int gradeCounter {0};
+    unsigned int grade_counter {0};
     const int NUMBER_OF_STUDENTS {10};
 
     // Processing phase uses counter-controlled iteration.
-    while (gradeCounter < NUMBER_OF_STUDENTS) { // Loop 10 times (9 - 0 + 1)
+    while (grade_counter < NUMBER_OF_STUDENTS) { // Loop 10 times (9 - 0 + 1)
         cout << "Enter grade: "; // Prompt
         grade = 0;
         cin >> grade; // Input next grade
         total += grade; // Add grade to total
-        gradeCounter++;
+        grade_counter++;
     }
 
     // Termination phase.

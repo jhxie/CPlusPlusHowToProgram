@@ -1,10 +1,14 @@
-# Invoke 'Graphviz' drawing software to draw the graph(s) specified in the
-# first element of input (prefixed by absolute path).
+# Invoke 'Graphviz' drawing software to draw the graph specified in the first
+# element of input (prefixed by absolute path).
 # The rest of the arguments are optional.
 #
 # NOTE:
-# A custom target with the same base name as ARGV[0] with extension named as
-# the desired file type is created.
+# A custom target with the same base name as ARGV[0] would be created.
+# For example, the invocation
+# 'add_graphviz_target("/home/user/projects/graphviz_experiment/test.gv")'
+# would create a target named 'test.gv'; this also implies that there cannnot
+# be another file with the exact same name in a project regardless of which
+# subdirectory it resides.
 #
 # ARGV[1] - layout engine
 # If given, use the layout engine specified rather than the default 'dot'.
@@ -102,5 +106,10 @@ function(add_graphviz_target)
     )
 endfunction()
 
+# Invoke 'Graphviz' drawing software to draw all the graph(s) specified
+# (prefixed by absolute path(s)).
 function(add_multiple_graphviz_targets)
+    foreach(graphviz_target ${ARGV})
+        add_graphviz_target(${graphviz_target})
+    endforeach()
 endfunction()

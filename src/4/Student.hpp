@@ -8,56 +8,57 @@
 
 class Student final {
 public:
-    Student(std::string studentName, int studentAverage) : name(studentName) {
-        setAverage(studentAverage);
+    Student(std::string student_name, int student_average)
+        : name_(student_name) {
+        SetAverage(student_average);
     }
 
 /* =============================== Mutators ================================ */
-    void setName(std::string studentName) {
-        name = studentName;
+    void SetName(std::string student_name) {
+        name_ = student_name;
     }
 
-    void setAverage(int studentAverage) {
+    void SetAverage(int student_average) {
         // Selection statements nesting.
-        // Validate that 'studentAverage' is in the range of (0, 100];
+        // Validate that 'student_average' is in the range of (0, 100];
         // otherwise, keep data member average's current value.
-        if (studentAverage > 0) {
-            if (studentAverage <= 100) {
-                average = studentAverage;
+        if (student_average > 0) {
+            if (student_average <= 100) {
+                average_ = student_average;
             }
         }
     }
 /* =============================== Mutators ================================ */
 
 /* ============================== Accessors ================================ */
-    std::string getName() const {
-        return name;
+    std::string GetName() const {
+        return name_;
     }
 
-    int getAverage() const {
-        return average;
+    int GetAverage() const {
+        return average_;
     }
 
-    std::string getLetterGrade() const {
+    std::string GetLetterGrade() const {
         // Initialized to empty string by its default constructor.
-        std::string letterGrade;
+        std::string letter_grade;
 
-        if (getAverage() >= 90) {
-            letterGrade = "A";
-        } else if (getAverage() >= 80) {
-            letterGrade = "B";
-        } else if (getAverage() >= 70) {
-            letterGrade = "C";
-        } else if (getAverage() >= 60) {
-            letterGrade = "D";
+        if (GetAverage() >= 90) {
+            letter_grade = "A";
+        } else if (GetAverage() >= 80) {
+            letter_grade = "B";
+        } else if (GetAverage() >= 70) {
+            letter_grade = "C";
+        } else if (GetAverage() >= 60) {
+            letter_grade = "D";
         } else {
-            letterGrade = "F";
+            letter_grade = "F";
         }
 
-        return letterGrade;
+        return letter_grade;
     }
 /* ============================== Accessors ================================ */
 private:
-    std::string name;
-    int average{0};
+    std::string name_;
+    int average_{0};
 };

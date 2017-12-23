@@ -11,40 +11,41 @@ public:
     // Compiler would not provide default constructor for class that has a
     // custom defined constructor.
     //
-    // Constructor initializes data member name with parameter 'accountName'
-    // explicit Account(std::string accountName) : name{accountName} {
+    // Constructor initializes data member name with parameter 'account_name'
+    // explicit Account(std::string account_name) : name_{account_name} {
     // }
-    Account(std::string accountName, int initialBalance) : name{accountName} {
+    Account(std::string account_name, int initial_balance)
+        : name_{account_name} {
 
-        // Validate that the 'initialBalance' is greater than 0; if not,
+        // Validate that the 'initial_balance' is greater than 0; if not,
         // data member balance keeps its default initial value of 0.
-        if (initialBalance > 0) {
-            balance = initialBalance;
+        if (initial_balance > 0) {
+            balance_ = initial_balance;
         }
     }
 
     // Function that deposits only a valid amount to the balance.
-    void deposit(int depositAmount) {
-        if (depositAmount > 0) {
-            balance += depositAmount;
+    void Deposit(int deposit_amount) {
+        if (deposit_amount > 0) {
+            balance_ += deposit_amount;
         }
     }
 
     // Member function that sets the account name in the object.
-    void setName(std::string accountName) {
-        name = accountName;
+    void SetName(std::string account_name) {
+        name_ = account_name;
     }
 
-    int getBalance() const {
-        return balance;
+    int GetBalance() const {
+        return balance_;
     }
 
     // Member function that retrieves the account name from the object.
-    std::string getName() const {
-        return name;
+    std::string GetName() const {
+        return name_;
     }
 
 private:
-    std::string name;
-    int balance{0}; // Data member with default initial value
+    std::string name_;
+    int balance_{0}; // Data member with default initial value
 };

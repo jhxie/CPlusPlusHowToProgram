@@ -1,0 +1,78 @@
+/*
+   5.12
+   Switch multiple-selection statement UML activity diagram with 'break'
+   statements.
+*/
+strict digraph "SwitchStatement" {
+
+    graph [rankdir="TB"];
+
+    subgraph "main" {
+        /* Initial and final state symbols. */
+        node [fillcolor="black", label="", shape="circle", style="filled"];
+        Start;
+        End [peripheries="2"];
+
+        /* Merge and Decision symbols. */
+        node [fillcolor="white", orientation="45", shape="square"];
+        DecisionA, DecisionB, DecisionZ, MergeAB, MergeBZ;
+
+        /* Action state symbols. */
+        node [
+            fillcolor="steelblue1",
+            label="break",
+            orientation="0",
+            peripheries="2",
+            shape="rect",
+            style="filled,rounded"
+        ];
+        CaseActionA [label="case a action(s)"];
+        CaseActionB [label="case b action(s)"];
+        CaseActionZ [label="case z action(s)"];
+        CaseActionDefault [label="default action(s)"];
+        CaseBreakA, CaseBreakB, CaseBreakZ;
+
+        /* Abbreviation symbol. */
+        Abbreviation [
+            fillcolor="white",
+            label=".\n.\n.",
+            peripheries="0",
+            style=""
+        ];
+    }
+
+    subgraph "note" {
+        graph [rank="same"];
+        /* Note symbols for decision 'A', 'B', and 'Z'. */
+        node [
+            fillcolor="steelblue1",
+            peripheries="0",
+            shape="note",
+            style="filled"
+        ];
+        NoteDecisionA [label="case a"];
+        NoteDecisionB [label="case b"];
+        NoteDecisionZ [label="case z"];
+    }
+
+    Start -> DecisionA;
+    Abbreviation -> DecisionZ;
+    CaseActionDefault -> End;
+    CaseActionA -> CaseBreakA -> MergeAB -> MergeBZ -> End;
+    CaseActionB -> CaseBreakB -> MergeAB;
+    CaseActionZ -> CaseBreakZ -> MergeBZ;
+
+    edge [label="[true]"];
+    DecisionA -> CaseActionA;
+    DecisionB -> CaseActionB;
+    DecisionZ -> CaseActionZ;
+
+    edge [label="[false]"];
+    DecisionA -> DecisionB -> Abbreviation;
+    DecisionZ -> CaseActionDefault;
+
+    edge [arrowhead="none", style="dashed", label=""];
+    DecisionA -> NoteDecisionA;
+    DecisionB -> NoteDecisionB;
+    DecisionZ -> NoteDecisionZ;
+}
