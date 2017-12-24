@@ -1,6 +1,17 @@
 # Change Log
 This document records all notable changes to *CPlusPlusHowToProgram*.  
 
+## 0.5 (2017-12-23)
+* Completed the samples shown in *Chapter 5*.
+
+* Imported *DownloadProject* *CMake* module to handle potential future use of
+*Google Test Framework*
+
+* Reformatted the source code to make it partially comply with the
+[Google C++ Style Guide][CPPSTYLE].
+
+* Reproduced three diagrams shown in the chapter with *GraphViz*.
+
 ## 0.4 (2017-12-11)
 * Completed the samples shown in *Chapter 4*.
 
@@ -24,3 +35,5 @@ This document records all notable changes to *CPlusPlusHowToProgram*.
 
 * Wrote a *CMake* module named *AddExecutableList* in order to simplify the
 build process.
+
+[CPPSTYLE]: https://google.github.io/styleguide/cppguide.html

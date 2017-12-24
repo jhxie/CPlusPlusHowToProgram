@@ -5,7 +5,7 @@ book.
 ## Dependencies
 * C++ Compiler with ISO C++ 14 Support (Clang **3.5** / GCC **6.1** / Visual C++ **14.0**)
 * [CMake][CMK] Build System (**3.4.3**)
-* [GraphViz][GVZ] Graph Visualization Software (2.38)
+* [GraphViz][GVZ] Graph Visualization Software (**2.38**)
 
 **Ubuntu** (17.10)  
 ```bash
