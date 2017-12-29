@@ -53,3 +53,48 @@ the afore-mentioned shortcomings are demonstrated.
 * [LetterGrades](5/LetterGrades.cpp)
 * [Sum](5/Sum.cpp)
 * [WhileCounter](5/WhileCounter.cpp)
+
+## 6. Functions and an Introduction to Recursion
+The concept of function and their specialized template form are shown;
+recursion is demonstrated side by side with its iteration counterpart. The
+underlying *stack* based implementation for function calls is also mentioned to
+gain insights on how recursion is achieved.
+
+### Important Topics
+
+| Section |                               Topic                               |
+|:------- |:-----------------------------------------------------------------:|
+| 6.1     |Function Argument Evaluation Order                                 |
+| 6.5.3   |Promotion Hierarchy                                                |
+| 6.6     |C++ Standard Library Headers' Index                                |
+| 6.7.5   |Scaling and Shifting Random Numbers                                |
+| 6.10    |Scope Rules                                                        |
+| 6.11    |Function Call Stack                                                |
+| 6.16    |Name Mangling                                                      |
+| 6.19    |Order of Evaluation of Operands                                    |
+
+### Diagram Listing
+
+* [FactorialConclusion](../doc/6/FactorialConclusion.gv)
+* [FactorialProcession](../doc/6/FactorialProcession.gv)
+* [FibonacciProgression](../doc/6/FibonacciProgression.gv)
+
+### Source Listing
+
+* [ArgumentDefault](6/ArgumentDefault.cpp)
+* [ArgumentPassing](6/ArgumentPassing.cpp)
+* [CubeVolumeInline](6/CubeVolumeInline.cpp)
+* [DiceCraps](6/DiceCraps.cpp)
+* [DieFrequency](6/DieFrequency.cpp)
+* [DieNaive](6/DieNaive.cpp)
+* [DieSimplePRNG](6/DieSimplePRNG.cpp)
+* [DieStatisticalPRNG](6/DieStatisticalPRNG.cpp)
+* [FactorialIterative](6/FactorialIterative.cpp)
+* [FactorialRecursive](6/FactorialRecursive.cpp)
+* [FibonacciRecursive](6/FibonacciRecursive.cpp)
+* [FunctionOverloading](6/FunctionOverloading.cpp)
+* [Maximum](6/Maximum.hpp)
+* [MaximumTest](6/MaximumTest.cpp)
+* [MaximumValue](6/MaximumValue.cpp)
+* [ScopeOperatorUnary](6/ScopeOperatorUnary.cpp)
+* [ScopingRules](6/ScopingRules.cpp)

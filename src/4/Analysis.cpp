@@ -7,7 +7,8 @@
 
 using namespace std;
 
-enum {
+enum
+{
     FAILURE,
     PASS,
     SIZE

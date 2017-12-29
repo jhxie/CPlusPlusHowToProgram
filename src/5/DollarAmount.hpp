@@ -8,7 +8,8 @@
 #include <string>
 #include <cmath>
 
-class DollarAmount final {
+class DollarAmount final
+{
 public:
     // Initialize amount from an 'int64_t' value
     explicit DollarAmount(int64_t value) : amount_ {value}

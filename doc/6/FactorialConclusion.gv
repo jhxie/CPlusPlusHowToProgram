@@ -1,0 +1,27 @@
+/*
+   6.18
+   Conclusion of recursive calls constructed to compute factorial 5!.
+*/
+strict digraph "FactorialConclusion" {
+    graph [rankdir="BT"];
+
+    /* Activation record (stack frame) symbols. */
+    node [
+        fillcolor="steelblue1",
+        peripheries="2",
+        shape="rect",
+        style="filled"
+    ];
+    Caller [label="5!", xlabel="Final Value = 120"];
+    Tail5 [label="5 * 4!"];
+    Tail4 [label="4 * 3!"];
+    Tail3 [label="3 * 2!"];
+    Tail2 [label="2 * 1!"];
+    Tail1 [label="1"];
+
+    Tail1 -> Tail2 [label="1 returned"];
+    Tail2 -> Tail3 [label="2! = 2 * 1! = 2 is returned"];
+    Tail3 -> Tail4 [label="3! = 3 * 2! = 6 is returned"];
+    Tail4 -> Tail5 [label="4! = 4 * 3! = 24 is returned"];
+    Tail5 -> Caller [label="5! = 5 * 4! = 120 is returned"];
+}

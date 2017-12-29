@@ -1,0 +1,51 @@
+/*
+   6.19
+   Function call graph of evaluating 'Fibonacci(3)'.
+*/
+strict digraph "FibonacciProgression" {
+    graph [rankdir="TB"];
+
+    /* Activation record (stack frame) symbols. */
+    node [
+        fillcolor="steelblue1",
+        peripheries="2",
+        shape="rect",
+        style="filled"
+    ];
+
+    Root [label="fibonacci(3)"];
+
+    subgraph "Depth1" {
+        graph [rank="same"];
+
+        Depth1Child1 [label="fibonacci(2)", xlabel="return"];
+        Depth1Child2 [label="fibonacci(1)"];
+
+        Depth1Child1 -> Depth1Child2 [arrowhead="none", label="+"];
+    }
+
+    Root -> { Depth1Child1; Depth1Child2; }
+
+    subgraph "Depth2" {
+        graph [rank="same"];
+
+        Depth2Child1 [label="fibonacci(1)", xlabel="return"];
+        Depth2Child2 [label="fibonacci(0)"];
+        Depth2Child3 [label="return 1"];
+
+        Depth2Child1 -> Depth2Child2 [arrowhead="none", label="+"];
+    }
+
+    Depth1Child1 -> { Depth2Child1; Depth2Child2; }
+    Depth1Child2 -> Depth2Child3;
+
+    subgraph "Depth3" {
+        graph [rank="same"];
+
+        Depth3Child1 [label="return 1"];
+        Depth3Child2 [label="return 0"];
+    }
+
+    Depth2Child1 -> Depth3Child1;
+    Depth2Child2 -> Depth3Child2;
+}

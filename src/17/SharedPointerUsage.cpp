@@ -3,7 +3,7 @@
 
 using namespace std;
 
-class Demonstration
+class Demonstration final
 {
 public:
     void show()
