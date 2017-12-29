@@ -5,16 +5,13 @@
 # SET(BUILD_SHARED_LIBRARIES OFF)
 # SET(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++ -static")
 
-# NOTE:
-# All source files in the 'executable_list' list are regarded as a
-# single source (translation unit) executable target.
-list(APPEND
-    executable_list
-    "UniquePointerUsage.cpp"
-    "SharedPointerUsage.cpp"
-)
+# list(APPEND
+#     executable_list
+# )
 
-add_multiple_executable_list(${executable_list})
+# add_multiple_executable_list(${executable_list})
+# add_subdirectory("exercises")
+
 # target_link_libraries(main ${CMAKE_THREAD_LIBS_INIT})
 # install(TARGETS main
 # RUNTIME DESTINATION /usr/bin      COMPONENT Runtime)
