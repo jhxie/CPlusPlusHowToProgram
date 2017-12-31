@@ -79,7 +79,7 @@ gain insights on how recursion is achieved.
 * [FactorialProcession](../doc/6/FactorialProcession.gv)
 * [FibonacciProgression](../doc/6/FibonacciProgression.gv)
 
-### Source Listing
+### Sample Source Listing
 
 * [ArgumentDefault](6/ArgumentDefault.cpp)
 * [ArgumentPassing](6/ArgumentPassing.cpp)
@@ -98,3 +98,17 @@ gain insights on how recursion is achieved.
 * [MaximumValue](6/MaximumValue.cpp)
 * [ScopeOperatorUnary](6/ScopeOperatorUnary.cpp)
 * [ScopingRules](6/ScopingRules.cpp)
+
+### Exercise Source Listing
+
+* [6-11](6/exercises/6-11.cpp)
+* [6-12](6/exercises/6-12.cpp)
+* [6-13](6/exercises/6-13.cpp)
+* [6-14](6/exercises/6-14.cpp)
+* [6-17](6/exercises/6-17.cpp)
+* [6-23](6/exercises/6-23.cpp)
+* [6-28](6/exercises/6-28.cpp)
+* [6-29](6/exercises/6-29.cpp)
+* [6-30](6/exercises/6-30.cpp)
+* [6-36](6/exercises/6-36.cpp)
+* [6-38](6/exercises/6-38.cpp)

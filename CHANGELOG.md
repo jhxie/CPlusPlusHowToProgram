@@ -1,6 +1,14 @@
 # Change Log
 This document records all notable changes to *CPlusPlusHowToProgram*.  
 
+## 0.6.1 (2018-1-1)
+* Added *CMake* support for *Boost* library.
+
+* Completed selective exercises shown at the end of *Chapter 6*.
+
+* Fixed logic defects in the *CMake* build system to make the project build
+  properly on Windows platform
+
 ## 0.6 (2017-12-29)
 * Completed the samples shown in *Chapter 6*.
 
