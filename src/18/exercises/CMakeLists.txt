@@ -6,10 +6,10 @@
 # SET(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++ -static")
 
 # list(APPEND
-#     executable_list
+#     exercises_executable_list
 # )
 
-# add_multiple_executable_list(${executable_list})
+# add_multiple_executable_list(${exercises_executable_list})
 
 # target_link_libraries(main ${CMAKE_THREAD_LIBS_INIT})
 # install(TARGETS main

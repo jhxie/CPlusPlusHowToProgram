@@ -29,13 +29,15 @@ list(APPEND
 # intentional in this specific file.
 # Reference:
 # stackoverflow.com/questions/13638408/override-compile-flags-for-single-files
-set_source_files_properties(
-    "ScopeOperatorUnary.cpp"
-    "ScopingRules.cpp"
-    PROPERTIES
-    COMPILE_FLAGS
-    "-Wno-shadow"
-)
+if(UNIX)
+    set_source_files_properties(
+        "ScopeOperatorUnary.cpp"
+        "ScopingRules.cpp"
+        PROPERTIES
+        COMPILE_FLAGS
+        "-Wno-shadow"
+    )
+endif()
 
 add_multiple_executable_list(${executable_list})
 add_subdirectory("exercises")

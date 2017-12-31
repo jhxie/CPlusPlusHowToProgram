@@ -5,11 +5,22 @@
 # SET(BUILD_SHARED_LIBRARIES OFF)
 # SET(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++ -static")
 
-# list(APPEND
-#     executable_list
-# )
+list(APPEND
+    exercises_executable_list
+    "6-11.cpp"
+    "6-12.cpp"
+    "6-13.cpp"
+    "6-14.cpp"
+    "6-17.cpp"
+    "6-23.cpp"
+    "6-28.cpp"
+    "6-29.cpp"
+    "6-30.cpp"
+    "6-36.cpp"
+    "6-38.cpp"
+)
 
-# add_multiple_executable_list(${executable_list})
+add_multiple_executable_list(${exercises_executable_list})
 
 # target_link_libraries(main ${CMAKE_THREAD_LIBS_INIT})
 # install(TARGETS main

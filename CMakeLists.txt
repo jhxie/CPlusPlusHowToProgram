@@ -36,14 +36,6 @@ elseif(UNIX)
         message(STATUS "Build Environment: Linux")
     endif()
 endif()
-
-# Remember to override this variable if debug info is not needed.
-if(NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE "Debug" CACHE STRING
-        "Choose the type of build, options are:
-        None Debug Release RelWithDebInfo MinSizeRel."
-        FORCE)
-endif()
 # =============================== Build Info ==================================
 
 # ============================= CMake Settings ================================
@@ -77,6 +69,26 @@ include("CTest")
 include("DownloadProject")
 # ------------------------------ CMake Modules --------------------------------
 
+# --------------------------- Dependant Libraries -----------------------------
+# Only 64-bit version Visual C++ on is supported on Windows.
+# Reference:
+# stackoverflow.com/questions/39258250/how-to-detect-if-64-bit-msvc-with-cmake
+if(WIN32)
+    if(NOT MSVC)
+        message(
+            FATAL_ERROR
+            "Only Microsoft Visual C++ is supported on Windows!"
+        )
+    endif()
+
+    if(NOT CMAKE_CL_64)
+        message(
+            FATAL_ERROR
+            "Only 64-bit version generator is supported on Windows!"
+        )
+    endif()
+endif()
+
 # Test the existence of thread library on the system.
 find_package(Threads REQUIRED)
 if(UNIX)
@@ -92,10 +104,19 @@ if(UNIX)
 endif()
 
 if(WIN32)
-    if(NOT CMAKE_THREAD_LIBS_INIT)
+    if(NOT CMAKE_USE_WIN32_THREADS_INIT)
         message(FATAL_ERROR "Thread library must be supported on the system!")
     endif()
 endif()
+
+find_package(Boost "1.62" REQUIRED)
+
+if(NOT Boost_FOUND)
+    message( FATAL_ERROR "Boost library must be installed on the system!")
+endif()
+
+# --------------------------- Dependant Libraries -----------------------------
+
 # ============================= CMake Settings ================================
 
 # =============================== Google Test =================================
@@ -209,9 +230,10 @@ endif()
 
 # Header(s) to be exported reside(s) in the include directory in the
 # relative root directory of this project.
-# include_directories(
-#     "${PROJECT_SOURCE_DIR}/include"
-# )
+include_directories(
+    ${Boost_INCLUDE_DIRS}
+    #"${PROJECT_SOURCE_DIR}/include"
+)
 
 foreach(sub_dir "doc" "src")
     add_subdirectory(${sub_dir})
