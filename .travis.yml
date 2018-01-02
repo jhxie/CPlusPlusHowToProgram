@@ -15,7 +15,7 @@ addons:
         packages:
             - cmake
             - graphviz
-            - libboost1.60-all-dev
+            - libboost-all-dev
 notifications:
     email: false
 script:
