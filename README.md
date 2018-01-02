@@ -4,7 +4,7 @@ book.
 
 ## Dependencies
 * C++ Compiler with ISO C++ 14 Support (Clang **3.5** / GCC **6.1** / Visual C++ **14.0**)
-* [Boost][BST] Library (**1.62**)
+* [Boost][BST] Library (**1.60**)
 * [CMake][CMK] Build System (**3.4.3**)
 * [GraphViz][GVZ] Graph Visualization Software (**2.38**)
 

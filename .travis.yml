@@ -1,21 +1,25 @@
 language: cpp
 compiler:
-        - clang
-        - gcc
+    - clang
+    - gcc
 os:
-        - linux
+    - linux
 branches:
-        only:
-                - master
-sudo: required
+    only:
+        - master
+# Use container-based Ubuntu 14.04 infrastructure.
+sudo: false
 dist: trusty
+addons:
+    apt:
+        packages:
+            - cmake
+            - graphviz
+            - libboost1.60-all-dev
 notifications:
-        email: false
-before_install:
-        - sudo apt-get update -qq
-        - sudo apt-get install -y \
-          cmake \
-          cmake-curses-gui \
-          cmake-extras \
-          extra-cmake-modules
-script: mkdir build && pushd !$ && cmake .. && make && popd
+    email: false
+script:
+    - mkdir build
+    - cd build
+    - cmake ..
+    - make
