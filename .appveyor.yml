@@ -18,7 +18,7 @@ install:
 before_build:
     - ps: mkdir build
     - ps: cd build
-    - ps: cmake -G "Visual Studio 15 2017 Win64" ..
+    - ps: cmake -G "Visual Studio 15 2017 Win64" -DBOOST_ROOT:STRING="C:\Libraries\boost_1_65_1" ..
 
 build:
     project: $(APPVEYOR_BUILD_FOLDER)\build\$(APPVEYOR_PROJECT_NAME).sln
