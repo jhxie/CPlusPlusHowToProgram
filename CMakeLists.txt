@@ -231,6 +231,7 @@ endif()
 # Header(s) to be exported reside(s) in the include directory in the
 # relative root directory of this project.
 include_directories(
+    SYSTEM
     ${Boost_INCLUDE_DIRS}
     #"${PROJECT_SOURCE_DIR}/include"
 )
