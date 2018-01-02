@@ -109,7 +109,7 @@ if(WIN32)
     endif()
 endif()
 
-find_package(Boost "1.54" REQUIRED)
+find_package(Boost "1.62" REQUIRED)
 
 if(NOT Boost_FOUND)
     message( FATAL_ERROR "Boost library must be installed on the system!")

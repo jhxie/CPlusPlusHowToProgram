@@ -1,0 +1,29 @@
+branches:
+    only:
+        - master
+
+image:
+    - Visual Studio 2017
+
+platform:
+    - x64
+
+configuration:
+    - Release
+    - Debug
+
+install:
+    - git submodule update --init --recursive
+    - ps: vcpkg install boost-multiprecision:x64-windows
+    - ps: call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
+
+before_build:
+    - ps: mkdir build
+    - ps: cd build
+    - ps: cmake -DCMAKE_TOOLCHAIN_FILE=c:/tools/vcpkg/scripts/buildsystems/vcpkg.cmake -G "Visual Studio 15 2017 Win64" ..
+
+build:
+    project: $(APPVEYOR_BUILD_FOLDER)\build\$(APPVEYOR_PROJECT_NAME).sln
+
+cache:
+    - C:\tools\vcpkg\installed\
