@@ -1,6 +1,5 @@
 language: cpp
 compiler:
-    - clang
     - gcc
 os:
     - linux
@@ -12,8 +11,11 @@ sudo: false
 dist: trusty
 addons:
     apt:
+        sources:
+            - sourceline: 'ppa:ubuntu-toolchain-r/test'
         packages:
             - cmake
+            - g++-7
             - graphviz
             - libboost-all-dev
 notifications:
@@ -21,5 +23,5 @@ notifications:
 script:
     - mkdir build
     - cd build
-    - cmake ..
+    - cmake -DCMAKE_CXX_COMPILER=/usr/bin/g++-7 ..
     - make
