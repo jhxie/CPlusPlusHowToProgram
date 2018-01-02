@@ -18,7 +18,7 @@ install:
 before_build:
     - ps: mkdir build
     - ps: cd build
-    - ps: cmake -DCMAKE_TOOLCHAIN_FILE=c:/tools/vcpkg/scripts/buildsystems/vcpkg.cmake -G "Visual Studio 15 2017 Win64" ..
+    - ps: cmake -G "Visual Studio 15 2017 Win64" ..
 
 build:
     project: $(APPVEYOR_BUILD_FOLDER)\build\$(APPVEYOR_PROJECT_NAME).sln
