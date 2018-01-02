@@ -41,6 +41,14 @@ function(add_graphviz_target)
         "fdp"
     )
 
+    foreach(layout_engine ${gv_layout_engine_list})
+        find_program(GRAPHVIZ NAMES ${layout_engine})
+        if(${GRAPHVIZ} STREQUAL "GRAPHVIZ-NOTFOUND")
+            message(WARNING "Layout engine '${layout_engine}' is not found")
+            return()
+        endif()
+    endforeach()
+
     get_filename_component(gv_output_file_base ${gv_input_file} NAME_WE)
     get_filename_component(gv_input_file_format ${gv_input_file} EXT)
     set(gv_output_file_path "${CMAKE_CURRENT_BINARY_DIR}")
