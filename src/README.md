@@ -112,3 +112,37 @@ gain insights on how recursion is achieved.
 * [6-30](6/exercises/6-30.cpp)
 * [6-36](6/exercises/6-36.cpp)
 * [6-38](6/exercises/6-38.cpp)
+
+## 7. Class Templates array and vector; Catching Exceptions
+The topic of data structure is initially introduced by using *array* and its
+dynamic variant *vector*; the proper application of the two is further
+elaborated upon with a case study that makes use of the exception-handling
+mechanism.
+
+### Important Topics
+
+| Section |                               Topic                               |
+|:------- |:-----------------------------------------------------------------:|
+| 7.2     |Precedence and Associativity of Operators (Cumulative Topic)       |
+| 7.4.7   |Bounds Checking for array Subscripts                               |
+| 7.5     |Range-Based for Statement                                          |
+| 7.7     |Sorting and Searching arrays                                       |
+
+### Sample Source Listing
+
+* [ArrayBraceInitialization](7/ArrayBraceInitialization.cpp)
+* [ArrayConstantSize](7/ArrayConstantSize.cpp)
+* [ArrayDieRolling](7/ArrayDieRolling.cpp)
+* [ArrayGradeBarChart](7/ArrayGradeBarChart.cpp)
+* [ArrayInitializationComparison](7/ArrayInitializationComparison.cpp)
+* [ArrayLoopInitialization](7/ArrayLoopInitialization.cpp)
+* [ArrayLoopRange](7/ArrayLoopRange.cpp)
+* [ArrayMultidimensional](7/ArrayMultidimensional.cpp)
+* [ArraySortAndSearch](7/ArraySortAndSearch.cpp)
+* [ArraySum](7/ArraySum.cpp)
+* [ArraySurveySummary](7/ArraySurveySummary.cpp)
+* [GradeBook2DArray](7/GradeBook2DArray.cpp)
+* [GradeBook2DArrayTest](7/GradeBook2DArrayTest.cpp)
+* [GradeBookSingleArray](7/GradeBookSingleArray.cpp)
+* [GradeBookSingleArrayTest](7/GradeBookSingleArrayTest.cpp)
+* [VectorDemonstration](7/VectorDemonstration.cpp)

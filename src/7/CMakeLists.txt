@@ -5,11 +5,40 @@
 # SET(BUILD_SHARED_LIBRARIES OFF)
 # SET(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++ -static")
 
-# list(APPEND
-#     executable_list
-# )
+list(APPEND
+    executable_list
+    "ArrayBraceInitialization.cpp"
+    "ArrayConstantSize.cpp"
+    "ArrayDieRolling.cpp"
+    "ArrayGradeBarChart.cpp"
+    "ArrayInitializationComparison.cpp"
+    "ArrayLoopInitialization.cpp"
+    "ArrayLoopRange.cpp"
+    "ArrayMultidimensional.cpp"
+    "ArraySortAndSearch.cpp"
+    "ArraySum.cpp"
+    "ArraySurveySummary.cpp"
+    "VectorDemonstration.cpp"
+)
 
-# add_multiple_executable_list(${executable_list})
+add_multiple_executable_list(${executable_list})
+
+
+list(APPEND
+    gradebook_single_array_list
+    "GradeBookSingleArrayTest.cpp"
+    "GradeBookSingleArray.cpp"
+)
+
+add_executable_list(${gradebook_single_array_list})
+
+list(APPEND
+    gradebook_2d_array_list
+    "GradeBook2DArrayTest.cpp"
+    "GradeBook2DArray.cpp"
+)
+
+add_executable_list(${gradebook_2d_array_list})
 # add_subdirectory("exercises")
 
 # target_link_libraries(main ${CMAKE_THREAD_LIBS_INIT})

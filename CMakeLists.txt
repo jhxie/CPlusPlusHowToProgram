@@ -1,11 +1,11 @@
 # This cmake configuration is based on an existing file the author (Jiahui Xie)
 # wrote for another project with some minor changes added to make it work
 # properly with a modern c++ 14 codebase.
-cmake_minimum_required(VERSION 3.4.3 FATAL_ERROR)
+cmake_minimum_required(VERSION "3.4.3" FATAL_ERROR)
 # Both languages have to be listed here due to issues in the cmake build system
 # e.g. cmake will not find thread library for some unknown reason if c is not
 # listed below.
-project(CPlusPlusHowToProgram C CXX)
+project("CPlusPlusHowToProgram" C CXX)
 
 # =============================== Build Info ==================================
 if(APPLE)
@@ -89,6 +89,10 @@ if(WIN32)
     endif()
 endif()
 
+# The GraphViz package is only used to build diagrams located in the 'doc'
+# sub-directory; this step is skipped if it is not found.
+find_package(GraphViz)
+
 # Test the existence of thread library on the system.
 find_package(Threads REQUIRED)
 if(UNIX)
@@ -135,7 +139,39 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 #add_subdirectory(${googletest_SOURCE_DIR} ${googletest_BINARY_DIR})
 # =============================== Google Test =================================
 
-# ================================ GCC FLAGS ==================================
+# ============================ Visual C++ Flags ===============================
+# ------------------------- Global Warning Options ----------------------------
+set(VCPP_WARN4 "/W4")
+set(VCPP_WARN_ADDITIONAL_SECURITY "/sdl")
+# ------------------------- Global Warning Options ----------------------------
+
+# ----------------------------- Output Options --------------------------------
+# Reference:
+# docs.microsoft.com/en-us/cpp/build/reference/
+# utf-8-set-source-and-executable-character-sets-to-utf-8
+# "
+# By default, Visual Studio detects a byte-order mark to determine if the
+# source file is in an encoded Unicode format, for example, UTF-16 or UTF-8.
+# If no byte-order mark is found, it assumes the source file is encoded using
+# the current user code page, unless you have specified a code page by using
+# /utf-8 or the /source-charset option.
+# "
+# Since certain programs on UNIX have trouble parsing text files with byte
+# order markers, the text files need to be explicitly treated as UTF-8 encoded
+# on Windows.
+set(VCPP_UTF8 "/utf-8")
+# ----------------------------- Output Options --------------------------------
+if(WIN32)
+    # 3 flags enabled in total.
+    add_compile_options(
+        ${VCPP_WARN4}
+        ${VCPP_WARN_ADDITIONAL_SECURITY}
+        ${VCPP_UTF8}
+    )
+endif()
+# ============================ Visual C++ Flags ===============================
+
+# ================================ GCC Flags ==================================
 # Note that these compiler options should work for all compilers that support
 # the same flag as gcc: so clang, mingw, and cygwin are all valid candidates.
 # ------------------------- Global Warning Options ----------------------------
@@ -215,12 +251,13 @@ if(UNIX)
         ${GCC_WARN_UNINITIALIZED}
         ${GCC_OUTPUT_PIPE}
         ${GCC_GENERATION_EXCEPTION}
-        ${GCC_GENERATION_SIGNED_OVERFLOW_TRAP})
+        ${GCC_GENERATION_SIGNED_OVERFLOW_TRAP}
+    )
         # ${GCC_SANITIZE_ADDRESS_FLAG}
         # ${GCC_SANITIZE_LEAK_FLAG}
         # ${GCC_SANITIZE_UNDEFINED_FLAG}
 endif()
-# ================================ GCC FLAGS ==================================
+# ================================ GCC Flags ==================================
 
 # ============================= Source Probing ================================
 #                                    NOTE
@@ -236,7 +273,9 @@ include_directories(
     #"${PROJECT_SOURCE_DIR}/include"
 )
 
-foreach(sub_dir "doc" "src")
-    add_subdirectory(${sub_dir})
-endforeach()
+if(GraphViz_FOUND)
+    add_subdirectory("doc")
+endif()
+
+add_subdirectory("src")
 # ============================= Source Probing ================================

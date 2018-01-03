@@ -13,11 +13,12 @@
 # ARGV[1] - layout engine
 # If given, use the layout engine specified rather than the default 'dot'.
 # Available options are ('man 7 graphviz' on Debian for further information):
-# dot    filter for hierarchical layouts of graphs
-# neato  filter for symmetric layouts of graphs
-# twopi  filter for radial layouts of graphs
-# circo  filter for circular layout of graphs
-# fdp    filter for symmetric layouts of graphs
+# dot       filter for hierarchical layouts of graphs
+# neato     filter for symmetric layouts of graphs
+# twopi     filter for radial layouts of graphs
+# circo     filter for circular layout of graphs
+# fdp       filter for symmetric layouts of graphs
+# patchwork filter for drawing clustered graphs as treemaps
 #
 # ARGV[2] - output format
 # If given, use the specified output format rather than the default 'png'.
@@ -39,6 +40,7 @@ function(add_graphviz_target)
         "twopi"
         "circo"
         "fdp"
+        "patchwork"
     )
 
     foreach(layout_engine ${gv_layout_engine_list})

@@ -3,11 +3,12 @@
 # This will define the following variables:
 #
 # GRAPHVIZ_FOUND
-# True if all the layout engines ("dot", "neato", "twopi", "circo", "fdp") are
+# True if all the layout engines
+# ("dot", "neato", "twopi", "circo", "fdp", "patchwork") are
 # available.
 
 set(_graphviz_found TRUE)
-foreach(layout_engine "dot;neato;twopi;circo;fdp")
+foreach(layout_engine "dot;neato;twopi;circo;fdp;patchwork")
     find_program(GRAPHVIZ NAMES ${layout_engine})
     if(${GRAPHVIZ} STREQUAL "GRAPHVIZ-NOTFOUND")
         set(_graphviz_found FALSE)

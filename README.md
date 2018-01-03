@@ -2,6 +2,10 @@
 Source code written during the learning path of [C++ How to Program][HTP]
 book.
 
+| Operating System | OS Version | Targeted Toolchain | Build Status |
+|:---------------- |:---------- |:------------------ |:------------:|
+| Windows          | 10 (x64)   | Visual Studio 2017 | [![Build Status](https://ci.appveyor.com/api/projects/status/of4r81q7duuxjj0s?svg=true)](https://ci.appveyor.com/project/jhxie/cplusplushowtoprogram) |
+
 ## Dependencies
 * C++ Compiler with ISO C++ 14 Support (Clang **3.5** / GCC **6.1** / Visual C++ **14.0**)
 * [Boost][BST] Library (**1.62**)
