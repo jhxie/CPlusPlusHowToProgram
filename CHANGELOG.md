@@ -1,6 +1,17 @@
 # Change Log
 This document records all notable changes to *CPlusPlusHowToProgram*.  
 
+## 0.7 (2018-1-3)
+* Added support for *AppVeyor* continuous integration system.
+
+* Completed the samples shown in *Chapter 7*.
+
+* Expanded the list of layout engine executables to be probed to include
+  *patchwork* in *CMake* modules *AddGraphvizTarget* and *FindGraphViz*.
+
+* Modified the settings for *CMake* build system to enable appropriate pedantic
+  warnings on Windows *Visual C++* platform.
+
 ## 0.6.1 (2018-1-1)
 * Added *CMake* support for *Boost* library.
 
