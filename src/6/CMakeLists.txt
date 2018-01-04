@@ -30,7 +30,8 @@ list(APPEND
 # Reference:
 # stackoverflow.com/questions/13638408/override-compile-flags-for-single-files
 if(UNIX)
-    set(_no_shadow_flag "-Wno-shadow")
+    set(_no_shadow_flag_a "-Wno-shadow")
+    set(_no_shadow_flag_b "")
 endif()
 
 # Does something similar but this is for Visual C++.
@@ -39,7 +40,8 @@ endif()
 # docs.microsoft.com/en-us/visualstudio/code-quality/c6244
 # docs.microsoft.com/en-us/visualstudio/code-quality/c6246
 if(WIN32)
-    list(APPEND _no_shadow_flag "/wd6244" "/wd6246")
+    set(_no_shadow_flag_a "/wd6244")
+    set(_no_shadow_flag_b "/wd6246")
 endif()
 
 set_source_files_properties(
@@ -47,10 +49,13 @@ set_source_files_properties(
     "ScopingRules.cpp"
     PROPERTIES
     COMPILE_FLAGS
-    ${_no_shadow_flag}
+    ${_no_shadow_flag_a}
+    ${_no_shadow_flag_b}
 )
 
-unset(_no_shadow_flag)
+unset(_no_shadow_flag_a)
+unset(_no_shadow_flag_b)
+
 add_multiple_executable_list(${executable_list})
 add_subdirectory("exercises")
 # target_link_libraries(main ${CMAKE_THREAD_LIBS_INIT})
