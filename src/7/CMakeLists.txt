@@ -39,7 +39,7 @@ list(APPEND
 )
 
 add_executable_list(${gradebook_2d_array_list})
-# add_subdirectory("exercises")
+add_subdirectory("exercises")
 
 # target_link_libraries(main ${CMAKE_THREAD_LIBS_INIT})
 # install(TARGETS main

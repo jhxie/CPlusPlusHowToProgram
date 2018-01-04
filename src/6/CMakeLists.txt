@@ -30,15 +30,27 @@ list(APPEND
 # Reference:
 # stackoverflow.com/questions/13638408/override-compile-flags-for-single-files
 if(UNIX)
-    set_source_files_properties(
-        "ScopeOperatorUnary.cpp"
-        "ScopingRules.cpp"
-        PROPERTIES
-        COMPILE_FLAGS
-        "-Wno-shadow"
-    )
+    set(_no_shadow_flag "-Wno-shadow")
 endif()
 
+# Does something similar but this is for Visual C++.
+# Reference:
+# docs.microsoft.com/en-us/cpp/build/reference/compiler-option-warning-level
+# docs.microsoft.com/en-us/visualstudio/code-quality/c6244
+# docs.microsoft.com/en-us/visualstudio/code-quality/c6246
+if(WIN32)
+    list(APPEND _no_shadow_flag "/wd6244" "/wd6246")
+endif()
+
+set_source_files_properties(
+    "ScopeOperatorUnary.cpp"
+    "ScopingRules.cpp"
+    PROPERTIES
+    COMPILE_FLAGS
+    ${_no_shadow_flag}
+)
+
+unset(_no_shadow_flag)
 add_multiple_executable_list(${executable_list})
 add_subdirectory("exercises")
 # target_link_libraries(main ${CMAKE_THREAD_LIBS_INIT})

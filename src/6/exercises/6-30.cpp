@@ -30,7 +30,7 @@ static ulong ReverseDigits(ulong number)
 
 int main(void)
 {
-    ulong number;
+    ulong number {0U};
     bool initial {true};
 
     cout << "Press [Ctrl-D] on UNIX or [Ctrl-Z] on Windows to quit.\n";
