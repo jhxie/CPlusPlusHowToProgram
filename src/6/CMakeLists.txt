@@ -25,38 +25,64 @@ list(APPEND
     "ScopingRules.cpp"
 )
 
+list(APPEND
+    no_shadow_warning_target_list
+    "DieSimplePRNG"
+    "ScopeOperatorUnary"
+    "ScopingRules"
+)
+
+add_multiple_executable_list(${executable_list})
+
 # Switch off the warning for shadowing outer scope identifiers as it is
 # intentional in this specific file.
 # Reference:
 # stackoverflow.com/questions/13638408/override-compile-flags-for-single-files
 if(UNIX)
     set(_no_shadow_flag_a "-Wno-shadow")
-    set(_no_shadow_flag_b "")
 endif()
 
 # Does something similar but this is for Visual C++.
+# The last two only becomes effective under warning level 4.
 # Reference:
 # docs.microsoft.com/en-us/cpp/build/reference/compiler-option-warning-level
 # docs.microsoft.com/en-us/visualstudio/code-quality/c6244
 # docs.microsoft.com/en-us/visualstudio/code-quality/c6246
+# /en-us/cpp/error-messages/compiler-warnings/compiler-warning-level-4-c4456
+# /en-us/cpp/error-messages/compiler-warnings/compiler-warning-level-4-c4459
 if(WIN32)
     set(_no_shadow_flag_a "/wd6244")
     set(_no_shadow_flag_b "/wd6246")
+    set(_no_shadow_flag_c "/wd4456")
+    set(_no_shadow_flag_d "/wd4459")
 endif()
 
-set_source_files_properties(
-    "ScopeOperatorUnary.cpp"
-    "ScopingRules.cpp"
-    PROPERTIES
-    COMPILE_FLAGS
-    ${_no_shadow_flag_a}
-    ${_no_shadow_flag_b}
-)
+foreach(no_shadow_target ${no_shadow_warning_target_list})
+    target_compile_options(
+        ${no_shadow_target}
+        PUBLIC
+        ${_no_shadow_flag_a}
+    )
+    if(WIN32)
+        target_compile_options(
+            ${no_shadow_target}
+            PUBLIC
+            ${_no_shadow_flag_b}
+            PUBLIC
+            ${_no_shadow_flag_c}
+            PUBLIC
+            ${_no_shadow_flag_d}
+        )
+    endif()
+endforeach()
 
 unset(_no_shadow_flag_a)
-unset(_no_shadow_flag_b)
+if(WIN32)
+    unset(_no_shadow_flag_b)
+    unset(_no_shadow_flag_c)
+    unset(_no_shadow_flag_d)
+endif()
 
-add_multiple_executable_list(${executable_list})
 add_subdirectory("exercises")
 # target_link_libraries(main ${CMAKE_THREAD_LIBS_INIT})
 # install(TARGETS main

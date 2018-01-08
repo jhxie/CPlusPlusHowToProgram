@@ -141,6 +141,7 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
 # ============================ Visual C++ Flags ===============================
 # ------------------------- Global Warning Options ----------------------------
+# The default warning level ("/W3") used in Visual Studio 2017 should suffice.
 set(VCPP_WARN4 "/W4")
 set(VCPP_WARN_ADDITIONAL_SECURITY "/sdl")
 # ------------------------- Global Warning Options ----------------------------
@@ -162,9 +163,9 @@ set(VCPP_WARN_ADDITIONAL_SECURITY "/sdl")
 set(VCPP_UTF8 "/utf-8")
 # ----------------------------- Output Options --------------------------------
 if(WIN32)
-    # 3 flags enabled in total.
+    # 2 flags enabled in total.
     add_compile_options(
-        ${VCPP_WARN4}
+        #${VCPP_WARN4}
         ${VCPP_WARN_ADDITIONAL_SECURITY}
         ${VCPP_UTF8}
     )

@@ -117,10 +117,17 @@
  */
 
 #include <array>
+#include <chrono>
 #include <cstdio>
+#include <cstdlib>
+#include <fstream>
 #include <iostream>
+#include <list>
+#include <memory>
+ #include <sstream>
 #include <stdexcept>
 #include <string>
+#include <thread>
 
 using namespace std;
 
@@ -179,14 +186,17 @@ public:
     /**
      * Default constructor places the 'Knight' on the upper left corner.
      */
-    KnightBoard() : visits_{1}, row_{0}, column_{0}
+    KnightBoard() : visits_{1}, row_{0}, column_{0}, complete_{false}
     {
         // Mark the initial position as visited.
         at(row(), column(), true);
     }
 
-    KnightBoard(const int initial_row, const int initial_column)
-        : visits_{1}, row_{row(initial_row)}, column_{column(initial_column)}
+    KnightBoard(const int initial_row, const int initial_column) :
+        visits_{1},
+        row_{row(initial_row)},
+        column_{column(initial_column)},
+        complete_{false}
     {
         // Mark the initial position as visited.
         at(row(), column(), true);
@@ -230,6 +240,7 @@ public:
             printf("+-");
         }
         puts("+\n");
+        printf("Visit Summary: %d/%d visited.\n", visits(), kMaxVisits);
     }
 
     const int &visits() const
@@ -245,6 +256,11 @@ public:
     const int &column() const
     {
         return column_;
+    }
+
+    const bool &complete() const
+    {
+        return complete_;
     }
 /* =============================== Accessors =============================== */
 
@@ -264,14 +280,21 @@ public:
         at(row(), column(), true);
         // Increment number of visited spot.
         visits(visits() + 1);
-    }
 
-    void visits(const int &new_visits)
+        if (visits() == kMaxVisits) {
+            complete(true);
+        }
+    }
+/* =============================== Mutators ================================ */
+
+private:
+/* =============================== Mutators ================================ */
+    int visits(const int &new_visits)
     {
         if (new_visits < 1 || new_visits > kMaxVisits) {
             throw out_of_range(string("'new_visits' out of range!"));
         }
-        visits_ = new_visits;
+        return visits_ = new_visits;
     }
 
     int row(const int &new_row)
@@ -289,18 +312,24 @@ public:
         }
         return column_ = new_column;
     }
+
+    bool complete(const bool &new_complete)
+    {
+        return complete_ = new_complete;
+    }
 /* =============================== Mutators ================================ */
 
-private:
     int visits_;
     int row_;
     int column_;
+    bool complete_;
 };
 
 
 class Knight final
 {
 public:
+    static constexpr int kMaxMoveNumber {7};
     /**
      *                   2 1
      *                  3   0
@@ -312,7 +341,7 @@ public:
     {
         BoardPosition position {};
 
-        if (move_number < 0 || move_number >= KnightBoard::kSideLength) {
+        if (move_number < 0 || move_number > kMaxMoveNumber) {
             throw out_of_range(string("'move_number' out of range!"));
         }
 
@@ -333,47 +362,19 @@ private:
 constexpr array<int, KnightBoard::kSideLength> Knight::horizontal_;
 constexpr array<int, KnightBoard::kSideLength> Knight::vertical_;
 
-int main(void)
+using KnightMoveListPointer = unique_ptr<list<int>>;
+
+static KnightMoveListPointer
+KnightMoveInteractiveEventLoop(const BoardPosition &start)
 {
     bool initial {true};
-    bool row_success {false};
-    bool column_success {false};
     int move_direction {0};
-    BoardPosition initial_position {};
     BoardPosition direction_position {};
     Knight knight;
-
-    cout \
-        << "To exit the program, press [Ctrl-D] on UNIX\n"
-        << "or [Ctrl-Z] on Windows during input event to quit.\n";
-
-    while (!(row_success && column_success)) {
-
-        cout << "Enter the initial row of knight: ";
-        if (cin >> initial_position.row) {
-            row_success = true;
-        }
-
-        cout << "Enter the initial column of knight: ";
-        if (cin >> initial_position.column) {
-            column_success = true;
-        }
-
-        if (row_success && column_success) {
-            try {
-                KnightBoard tmp_board(initial_position.row,
-                                  initial_position.column);
-            } catch (out_of_range &except) {
-                cerr << except.what() << endl;
-                cout << "The entered position is invalid!\n";
-
-                row_success = column_success = false;
-                continue;
-            }
-        }
-    }
-
-    KnightBoard board(initial_position.row, initial_position.column);
+    KnightBoard board(start.row, start.column);
+    KnightMoveListPointer direction_list_pointer {
+        new list<int>
+    };
 
     do {
         if (initial) {
@@ -383,39 +384,296 @@ int main(void)
                 direction_position = knight.Move(move_direction);
             } catch (out_of_range &except) {
                 cerr << except.what() << endl;
-                cout << "Please re-enter the direction number [0-7]: ";
+                cout \
+                    << "Please re-enter the direction number [0-"
+                    << Knight::kMaxMoveNumber
+                    << "]: ";
                 continue;
             }
             try {
-                board.MoveKnight(direction_position);
-#ifdef PRINT_DEBUG_INFO
                 cout \
-                    << "Row: " << board.row() << " "
-                    << "Column: " << board.column() << endl;
-#endif
+                    << "Knight Destination Position:\n"
+                    << "Row: " << board.row() + direction_position.row << "\n"
+                    << "Column: " << board.column() + direction_position.column
+                    << endl;
+                board.MoveKnight(direction_position);
+                // At this point 'move_direction' must be valid.
+                direction_list_pointer->push_back(move_direction);
             } catch (out_of_range &except) {
 
                 cerr << except.what() << endl;
                 cout \
-                    << "The move specified would be outside of board.\n"
-                    << "Please re-enter the direction number [0-7]: ";
+                    << "The move specified would land outside of board.\n"
+                    << "Please re-enter the direction number [0-"
+                    << Knight::kMaxMoveNumber
+                    << "]: ";
                 continue;
             } catch (invalid_argument &except) {
                 cerr << except.what() << endl;
                 cout \
                     << "The move specified would visit "
                     << "an already visited location.\n"
-                    << "Please re-enter the direction number [0-7]: ";
+                    << "Please re-enter the direction number [0-"
+                    << Knight::kMaxMoveNumber
+                    << "]: ";
                 continue;
             }
         }
 
-        if (board.visits() == board.kMaxVisits) {
+        if (board.complete()) {
             cout << "Knight's Tour finished." << endl;
             break;
         }
         board.DisplayStatus();
         cout << "Enter the move direction number: ";
     } while (cin >> move_direction);
+
+    return direction_list_pointer;
+}
+
+static void StartInteractiveMode(const char *const output_file_name = nullptr)
+{
+    bool row_success {false};
+    bool column_success {false};
+    bool write_summary_file {false};
+    BoardPosition initial_position {};
+    ofstream output_file_stream;
+
+    output_file_stream.open(output_file_name);
+    if (output_file_stream.good()) {
+        cout << "The output file is [" << output_file_name << "]" << "\n\n";
+        write_summary_file = true;
+    }
+
+    cout << "\n" "Enter the initial row of knight: ";
+    if (cin >> initial_position.row) {
+        row_success = true;
+    }
+
+    cout << "\n" "Enter the initial column of knight: ";
+    if (cin >> initial_position.column) {
+        column_success = true;
+    }
+
+    if (row_success && column_success) {
+        try {
+            KnightBoard tmp_board(initial_position.row,
+                              initial_position.column);
+        } catch (out_of_range &except) {
+            cerr << except.what() << endl;
+            cout << "\n" "The entered position is invalid!\n";
+            row_success = column_success = false;
+            exit(EXIT_FAILURE);
+        }
+    } else {
+            cout << "\n" "Position is not properly entered!\n";
+            row_success = column_success = false;
+            exit(EXIT_FAILURE);
+    }
+
+    KnightMoveListPointer direction_list_pointer {
+        KnightMoveInteractiveEventLoop(initial_position)
+    };
+
+    if (write_summary_file) {
+        output_file_stream \
+            << initial_position.row << "\t"
+            << initial_position.column << "\n";
+
+        for (auto const &direction : *direction_list_pointer) {
+            output_file_stream << direction << "\n";
+        }
+    }
+}
+
+static void
+KnightMoveReplayEventLoop(const BoardPosition &start,
+                          const list<int> &direction_list,
+                          const chrono::seconds &halt_duration)
+{
+    BoardPosition direction_position {};
+    Knight knight;
+    KnightBoard board(start.row, start.column);
+
+    for (auto const &move_direction : direction_list) {
+        try {
+            direction_position = knight.Move(move_direction);
+        } catch (out_of_range &except) {
+            cerr << except.what() << endl;
+            exit(EXIT_FAILURE);
+        }
+        try {
+            cout \
+                << "Knight Destination Position:\n"
+                << "Row: " << board.row() + direction_position.row << "\n"
+                << "Column: " << board.column() + direction_position.column
+                << endl;
+            board.MoveKnight(direction_position);
+        } catch (out_of_range &except) {
+
+            cerr << except.what() << endl;
+            cout \
+                << "The move specified would be outside of board.\n";
+            exit(EXIT_FAILURE);
+        } catch (invalid_argument &except) {
+            cerr << except.what() << endl;
+            cout \
+                << "The move specified would visit "
+                << "an already visited location.\n";
+            exit(EXIT_FAILURE);
+        }
+        if (board.complete()) {
+            cout << "Knight's Tour finished." << endl;
+            break;
+        }
+        board.DisplayStatus();
+        this_thread::sleep_for(halt_duration);
+    }
+}
+
+static void StartReplayMode(const char *const input_file_name,
+                            const chrono::seconds &halt_duration)
+{
+    bool row_success {false};
+    bool column_success {false};
+    int move_number {0};
+    BoardPosition initial_position {};
+    ifstream input_file_stream;
+    list<int> direction_list;
+
+    input_file_stream.open(input_file_name);
+    if (input_file_stream.good()) {
+        cout << "The input file is [" << input_file_name << "]" << "\n\n";
+    } else {
+        cout << "The input file for some reason is not accessible!\n";
+        exit(EXIT_FAILURE);
+    }
+
+    if (input_file_stream >> initial_position.row) {
+        row_success = true;
+    }
+
+    if (input_file_stream >> initial_position.column) {
+        column_success = true;
+    }
+
+    if (row_success && column_success) {
+        try {
+            KnightBoard tmp_board(initial_position.row,
+                              initial_position.column);
+        } catch (out_of_range &except) {
+            cerr << except.what() << endl;
+            cout << "\n" "The entered position is invalid!\n";
+            row_success = column_success = false;
+            exit(EXIT_FAILURE);
+        }
+    } else {
+            cout << "\n" "Initial position is not properly formatted!\n";
+            row_success = column_success = false;
+            exit(EXIT_FAILURE);
+    }
+
+    while (input_file_stream >> move_number) {
+        direction_list.push_back(move_number);
+    }
+
+    KnightMoveReplayEventLoop(initial_position, direction_list, halt_duration);
+}
+
+int main(int argc, char *argv[])
+{
+    int candidate_seconds {
+        6
+    };
+    const chrono::seconds kDefaultHaltSeconds {
+        candidate_seconds
+    };
+
+    static const char *const kInvalidFlagWarning {
+        "The command flag is invalid!\n"
+    };
+    static const char *const kHaltFlag {
+        "-t"
+    };
+    static const char *const kHelpFlag {
+        "-h"
+    };
+    static const char *const kInputFlag {
+        "-i"
+    };
+    static const char *const kOutputFlag {
+        "-o"
+    };
+    static stringstream kUsage;
+
+    kUsage \
+        << "Knight's Tour Interactive Program.\n"
+        << "To record the direction(s) taken during the process,\n"
+        << "specify the output file as the argument; for example:\n"
+        << argv[0] << " " << kOutputFlag << " [output.txt]\n\n"
+        << "To take the tour using the previously recorded output,\n"
+        << "specify the input file as the argument; for example:\n"
+        << argv[0] << " " << kInputFlag << " [input.txt]\n"
+        << "Optionally a halt duration in seconds can be specified\n"
+        << "when " << kInputFlag << " is given; for example:\n"
+        << argv[0] << " " << kInputFlag << " [input.txt] "
+        << kHaltFlag << " 2\n\n"
+        << "If no argument is given, the program would proceed as normal.\n\n"
+        << "To exit the program, press [Ctrl-D] on UNIX\n"
+        << "or [Ctrl-Z] on Windows during input event to quit.\n\n" << flush;
+
+    switch (argc) {
+    // Normal mode of operation; no files are involved.
+    case 1:
+        StartInteractiveMode();
+        break;
+    // Show usage information.
+    case 2:
+        if (string(argv[1]) == kHelpFlag) {
+            cout << kUsage.str() << flush;
+        } else {
+            cout << kInvalidFlagWarning;
+            exit(EXIT_FAILURE);
+        }
+        break;
+    // Determine whether it is record or replay mode.
+    case 3:
+        if (string(argv[1]) == kOutputFlag) {
+            StartInteractiveMode(argv[2]);
+        } else if (string(argv[1]) == kInputFlag) {
+            StartReplayMode(argv[2], kDefaultHaltSeconds);
+        } else {
+            cout << kInvalidFlagWarning;
+            exit(EXIT_FAILURE);
+        }
+        break;
+    // Determine what is the halt duration for replay mode.
+    case 5:
+        if (string(argv[1]) == kInputFlag && string(argv[3]) == kHaltFlag) {
+            // No attempt has been made to recover from conversion error.
+            try {
+                chrono::seconds custom_halt_seconds {
+                    stoi(argv[4])
+                };
+                StartReplayMode(argv[2], custom_halt_seconds);
+            } catch (invalid_argument &except) {
+                cerr << except.what() << endl;
+                cout << kInvalidFlagWarning;
+                exit(EXIT_FAILURE);
+            } catch (out_of_range &except) {
+                cerr << except.what() << endl;
+                cout << kInvalidFlagWarning;
+                exit(EXIT_FAILURE);
+            }
+        } else {
+            cout << kInvalidFlagWarning;
+            exit(EXIT_FAILURE);
+        };
+        break;
+    default:
+        cout << kInvalidFlagWarning;
+        exit(EXIT_FAILURE);
+    }
+
     return 0;
 }
