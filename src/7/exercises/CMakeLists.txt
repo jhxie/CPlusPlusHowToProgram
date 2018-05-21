@@ -9,6 +9,7 @@ list(APPEND
     exercises_executable_list
     "7-16.cpp"
     "7-22-B.cpp"
+    "7-22-C.cpp"
 )
 
 if(UNIX)
@@ -21,6 +22,7 @@ endif()
 
 set_source_files_properties(
     "7-22-B.cpp"
+    "7-22-C.cpp"
     PROPERTIES
     COMPILE_FLAGS
     "${_macro_prefix}PRINT_DEBUG_INFO"

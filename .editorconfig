@@ -23,11 +23,6 @@ indent_size = 8
 indent_style = space
 indent_size = 4
 
-# 4 space indentation
-[*.py]
-indent_style = space
-indent_size = 4
-
 # Tab indentation
 [Makefile]
 indent_style = tab
@@ -35,6 +30,17 @@ indent_size = 8
 
 [*.{md,markdown}]
 trim_trailing_whitespace = false
+max_line_length = 250
+
+[*.{pgsql,sql}]
+indent_style = space
+indent_size = 4
+max_line_length = 250
+
+# 4 space indentation
+[*.py]
+indent_style = space
+indent_size = 4
 
 [*.yml]
 max_line_length = 150

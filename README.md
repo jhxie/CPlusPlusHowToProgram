@@ -1,13 +1,14 @@
 ## Overview
 Source code written during the learning path of [C++ How to Program][HTP]
-book.
+book; an overview of the build environment for the continuous integration
+service can be viewed on this [page][APPVEYOR].
 
 | Operating System | OS Version | Targeted Toolchain | Build Status |
 |:---------------- |:---------- |:------------------ |:------------:|
 | Windows          | 10 (x64)   | Visual Studio 2017 | [![Build Status](https://ci.appveyor.com/api/projects/status/of4r81q7duuxjj0s?svg=true)](https://ci.appveyor.com/project/jhxie/cplusplushowtoprogram) |
 
 ## Dependencies
-* C++ Compiler with ISO C++ 14 Support (Clang **3.5** / GCC **6.1** / Visual C++ **14.0**)
+* C++ Compiler with ISO C++ 14 Support (Clang **3.5** / GCC **6.1** / Visual C++ **19.14**)
 * [Boost][BST] Library (**1.62**)
 * [CMake][CMK] Build System (**3.4.3**)
 * [GraphViz][GVZ] Graph Visualization Software (**2.38**)
@@ -15,6 +16,12 @@ book.
 As of this writing only the *Boost Multiprecision Library* is used from the Boost
 suite; note the library getting used in this code base is considered
 header-only.
+
+*GraphViz* is optional during the build process; however, the diagrams listed
+under the [doc](doc/) subdirectory would not be rendered and written to
+*build* subdirectory if all the layout engine executables of *GraphViz* cannot be
+found; refer to the custom *CMake* module
+[FindGraphViz](cmake/modules/FindGraphViz.cmake) for further details.
 
 **Ubuntu** (17.10)  
 Unfortunately there is no separate *Boost Multiprecision Library* available in
@@ -76,7 +83,7 @@ CMake → Build All
 ```
 It should use *Ninja* as a back-end during the building process.
 
-To import the project in previous versions of Visual Studio, first make sure
+To import the project with conventional solution file, first make sure
 *CMake* is properly installed, then issue the following in *PowerShell* after
 changing the working directory to where the source directory resides:
 ```
@@ -84,7 +91,7 @@ changing the working directory to where the source directory resides:
 cmake ..
 ```
 A Visual Studio solution file (*CPlusPlusHowToProgram.sln*) that matches the
-correct installed version should be generated inside *build* sub-directory;
+installed version of the *IDE* should be generated inside *build* sub-directory;
 simply open this file and build it with the *IDE* as usual.
 
 ## Getting Started
@@ -116,6 +123,7 @@ Copyright © 2017 - 2018 Jiahui Xie
 Licensed under the [BSD 2-Clause License][BSD2].  
 Distributed under the [BSD 2-Clause License][BSD2].  
 
+[APPVEYOR]: https://www.appveyor.com/docs/build-environment/
 [BSD2]: https://opensource.org/licenses/BSD-2-Clause
 [BST]: https://www.boost.org/
 [CMK]: https://cmake.org/

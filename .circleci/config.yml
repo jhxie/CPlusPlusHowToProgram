@@ -1,0 +1,28 @@
+version: 2
+jobs:
+    build:
+        docker:
+            # The 'rolling' tag refers to the latest release version.
+            - image: ubuntu:rolling
+        branches:
+            only:
+                - master
+        steps:
+            - checkout
+            - run:
+                name: Required Dependencies Installation
+                command: |
+                    apt-get -qy update && apt-get -qy install --no-upgrade --no-install-recommends \
+                        build-essential \
+                        cmake \
+                        cmake-extras \
+                        extra-cmake-modules \
+                        graphviz \
+                        libboost-all-dev
+            - run:
+                name: Main Compilation Step
+                command: |
+                    mkdir build
+                    cd !$
+                    cmake ..
+                    make -j$(nproc)

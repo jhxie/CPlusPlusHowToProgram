@@ -124,7 +124,7 @@
 #include <iostream>
 #include <list>
 #include <memory>
- #include <sstream>
+#include <sstream>
 #include <stdexcept>
 #include <string>
 #include <thread>
@@ -203,6 +203,10 @@ public:
     }
 
 /* =============================== Accessors =============================== */
+    /**
+     * Display the current position of knight on a chessboard in addition to
+     * the move number reference in 'ASCII' forms.
+     */
     void DisplayStatus() const
     {
         puts("Move Number Reference");
@@ -265,6 +269,10 @@ public:
 /* =============================== Accessors =============================== */
 
 /* =============================== Mutators ================================ */
+    /**
+     * Change the current position of knight on this chessboard according to
+     * the direction specified by the offset 'position'.
+     */
     void MoveKnight(const BoardPosition &position)
     {
         // Could also throw 'out_of_range'.
@@ -331,6 +339,8 @@ class Knight final
 public:
     static constexpr int kMaxMoveNumber {7};
     /**
+     * Return an offset that represents direction the knight goes.
+     *
      *                   2 1
      *                  3   0
      *                    K
@@ -364,6 +374,10 @@ constexpr array<int, KnightBoard::kSideLength> Knight::vertical_;
 
 using KnightMoveListPointer = unique_ptr<list<int>>;
 
+/**
+ * Given the initial knight's 'start' position, return a pointer to a list
+ * containing valid direction numbers entered by users.
+ */
 static KnightMoveListPointer
 KnightMoveInteractiveEventLoop(const BoardPosition &start)
 {
@@ -431,6 +445,14 @@ KnightMoveInteractiveEventLoop(const BoardPosition &start)
     return direction_list_pointer;
 }
 
+/**
+ * Launch the Knight's Tour chessboard game and write the given valid initial
+ * position in addition to direction numbers to the file named
+ * 'output_file_name'.
+ *
+ * If called without any actual argument, the initial position and direction
+ * numbers would be discarded.
+ */
 static void StartInteractiveMode(const char *const output_file_name = nullptr)
 {
     bool row_success {false};
@@ -486,6 +508,11 @@ static void StartInteractiveMode(const char *const output_file_name = nullptr)
     }
 }
 
+/**
+ * Given the knight's initial 'start' position and direction numbers in
+ * 'direction_list', the current status of keyboard would be shown for
+ * 'halt_duration' number of seconds, one step at a time.
+ */
 static void
 KnightMoveReplayEventLoop(const BoardPosition &start,
                           const list<int> &direction_list,
