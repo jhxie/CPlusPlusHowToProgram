@@ -23,6 +23,6 @@ jobs:
                 name: Main Compilation Step
                 command: |
                     mkdir build
-                    cd !$
+                    cd build
                     cmake ..
                     make -j$(nproc)
