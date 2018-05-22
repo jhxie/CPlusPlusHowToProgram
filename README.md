@@ -1,4 +1,4 @@
-[![Banner](img/banner.png)](https://en.wikipedia.org/wiki/Xerox_Alto)
+<a href="https://en.wikipedia.org/wiki/Xerox_Alto"><img align="center" src="img/banner.png" alt="Banner"></a>
 
 ## Overview
 Source code written during the learning path of [C++ How to Program][HTP]
