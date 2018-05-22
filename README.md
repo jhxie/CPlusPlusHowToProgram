@@ -1,11 +1,14 @@
+[![Banner](img/banner.png)](https://en.wikipedia.org/wiki/Xerox_Alto)
+
 ## Overview
 Source code written during the learning path of [C++ How to Program][HTP]
 book; an overview of the build environment for the continuous integration
 service can be viewed on this [page][APPVEYOR].
 
-| Operating System | OS Version | Targeted Toolchain | Build Status |
-|:---------------- |:---------- |:------------------ |:------------:|
-| Windows          | 10 (x64)   | Visual Studio 2017 | [![Build Status](https://ci.appveyor.com/api/projects/status/of4r81q7duuxjj0s?svg=true)](https://ci.appveyor.com/project/jhxie/cplusplushowtoprogram) |
+| Operating System | OS Version       | Targeted Toolchain | Build Status |
+|:---------------- |:----------------:|:------------------ |:------------:|
+| Ubuntu           | Rolling (x64)    | GCC                | [![Ubuntu Build Status](https://circleci.com/gh/jhxie/CPlusPlusHowToProgram.svg?style=shield)](https://circleci.com/gh/jhxie/CPlusPlusHowToProgram) |
+| Windows          | 10 (x64)         | Visual Studio 2017 | [![Windows Build Status](https://ci.appveyor.com/api/projects/status/of4r81q7duuxjj0s?svg=true)](https://ci.appveyor.com/project/jhxie/cplusplushowtoprogram) |
 
 ## Dependencies
 * C++ Compiler with ISO C++ 14 Support (Clang **3.5** / GCC **6.1** / Visual C++ **19.14**)
@@ -23,14 +26,14 @@ under the [doc](doc/) subdirectory would not be rendered and written to
 found; refer to the custom *CMake* module
 [FindGraphViz](cmake/modules/FindGraphViz.cmake) for further details.
 
-**Ubuntu** (17.10)  
+**Ubuntu** (Docker Tag: rolling)  
 Unfortunately there is no separate *Boost Multiprecision Library* available in
 the official package archive, so a full installation becomes mandatory:
 ```bash
 sudo apt-get install build-essential cmake cmake-extras extra-cmake-modules graphviz libboost-all-dev
 ```
 
-**Windows 10**  
+**Windows** (10)  
 Follow the [documentation][VS2017] listed to install *Visual Studio*, make sure
 workloads *Windows desktop development with C++* and
 *Linux development with C++* are installed.
@@ -117,6 +120,8 @@ the usual debug instructions as it requires in the relevant version.
 ## Credits
 * The [DownloadProject][DOWNPRO] *CMake* module is used to download and
 statically link [Google Test][GTEST] at project configure time.
+* The computer that appears on the *C++ How To Program* banner is loosely modeled
+after an *Xerox Alto*.
 
 ## License
 Copyright © 2017 - 2018 Jiahui Xie  

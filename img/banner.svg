@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
+   sodipodi:docname="banner.svg">
+  <title
+     id="title4638">C++ How To Program Banner</title>
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="304.65584"
+     inkscape:cy="243.64822"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer3"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="1116"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>C++ How To Program Banner</dc:title>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by-nc/4.0/" />
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Jiahui Xie</dc:title>
+          </cc:Agent>
+        </dc:creator>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by-nc/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:prohibits
+           rdf:resource="http://creativecommons.org/ns#CommercialUse" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#dad2b8;fill-opacity:1;stroke-width:0.34414297"
+       id="rect4517"
+       width="153.7997"
+       height="171.06563"
+       x="28.100151"
+       y="28.042152" />
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke-width:0.19472913"
+       id="rect4523"
+       width="59.977272"
+       height="11.670452"
+       x="75.01136"
+       y="199.11111" />
+    <rect
+       style="fill:#dad2b8;fill-opacity:1;stroke-width:0.28539717"
+       id="rect4525"
+       width="180.02948"
+       height="62.605858"
+       x="14.98526"
+       y="210.80855" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2"
+     style="display:inline">
+    <rect
+       style="display:inline;fill:#000000;fill-opacity:1;stroke-width:0.4426327"
+       id="rect4506"
+       width="140.69398"
+       height="159.34778"
+       x="34.653008"
+       y="33.901077" />
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke-width:0.26458332"
+       id="rect4527"
+       width="1.7008928"
+       height="62.177082"
+       x="24.765106"
+       y="211.23346" />
+    <rect
+       style="display:inline;fill:#000000;fill-opacity:1;stroke-width:0.26458332"
+       id="rect4527-8"
+       width="1.7008928"
+       height="62.177082"
+       x="183.534"
+       y="210.91222" />
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke-width:0.30717042"
+       id="rect4559"
+       width="157.42708"
+       height="23.434525"
+       x="26.269344"
+       y="245.25479" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Layer 3">
+    <rect
+       style="display:inline;fill:#796d65;fill-opacity:1;stroke-width:0.39717081"
+       id="rect4504"
+       width="95.888382"
+       height="112.91"
+       x="57.055809"
+       y="57.119965" />
+    <rect
+       style="display:inline;fill:#a31a22;fill-opacity:1;stroke-width:0.26458332"
+       id="rect4563"
+       width="8.1264877"
+       height="8.1264877"
+       x="169.9003"
+       y="249.65814" />
+    <rect
+       style="display:inline;fill:#b5331d;fill-opacity:1;stroke-width:0.26458332"
+       id="rect4563-1"
+       width="8.1264877"
+       height="8.1264877"
+       x="153.12447"
+       y="249.65814" />
+    <rect
+       style="display:inline;fill:#b37019;fill-opacity:1;stroke-width:0.26458332"
+       id="rect4563-0"
+       width="8.1264877"
+       height="8.1264877"
+       x="136.34863"
+       y="249.65814" />
+    <rect
+       style="display:inline;fill:#be9a80;fill-opacity:1;stroke-width:0.26458332"
+       id="rect4563-9"
+       width="8.1264877"
+       height="8.1264877"
+       x="119.57281"
+       y="249.65814" />
+    <rect
+       style="fill:#be9a80;fill-opacity:1;stroke-width:0.26458332"
+       id="rect4604"
+       width="24.568451"
+       height="7.3705359"
+       x="28.234823"
+       y="249.94168" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:12.69999981px;line-height:6.61458302px;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffb417;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="59.531258"
+       y="70.971252"
+       id="text4608"><tspan
+         sodipodi:role="line"
+         id="tspan4606"
+         x="59.531258"
+         y="70.971252"
+         style="font-size:12.69999981px;fill:#ffb417;fill-opacity:1;stroke-width:0.26458332">&gt;CPPHTP.RUN</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:19.75555611px;line-height:24.61000061px;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffb417;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="63.575623"
+       y="94.595078"
+       id="text4612"><tspan
+         sodipodi:role="line"
+         x="63.575623"
+         y="94.595078"
+         style="font-size:19.75555611px;line-height:24.61000061px;fill:#ffb417;fill-opacity:1;stroke-width:0.26458332"
+         id="tspan4614">C++</tspan><tspan
+         sodipodi:role="line"
+         x="63.575623"
+         y="119.20508"
+         style="font-size:19.75555611px;line-height:24.61000061px;fill:#ffb417;fill-opacity:1;stroke-width:0.26458332"
+         id="tspan4620">How To</tspan><tspan
+         sodipodi:role="line"
+         x="63.575623"
+         y="143.81508"
+         style="font-size:19.75555611px;line-height:24.61000061px;fill:#ffb417;fill-opacity:1;stroke-width:0.26458332"
+         id="tspan4624">Program</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.64444447px;line-height:6.61458302px;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#b5331d;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="14.438691"
+       y="284.26218"
+       id="text4632"><tspan
+         sodipodi:role="line"
+         id="tspan4630"
+         x="14.438691"
+         y="284.26218"
+         style="font-size:4.93888903px;fill:#b5331d;fill-opacity:1;stroke-width:0.26458332;-inkscape-font-specification:'Microsoft YaHei';font-family:'Microsoft YaHei';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Copyright © 2018 Jiahui Xie</tspan><tspan
+         sodipodi:role="line"
+         x="14.438691"
+         y="291.23257"
+         style="font-size:4.93888903px;fill:#b5331d;fill-opacity:1;stroke-width:0.26458332;-inkscape-font-specification:'Microsoft YaHei';font-family:'Microsoft YaHei';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
+         id="tspan4634">版权所有 © 2018 谢嘉辉</tspan></text>
+  </g>
+</svg>
