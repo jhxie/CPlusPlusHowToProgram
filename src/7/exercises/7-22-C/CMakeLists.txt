@@ -6,9 +6,11 @@
 # SET(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++ -static")
 
 list(APPEND
-    exercises_executable_list
-    "7-16.cpp"
-    "7-22-B.cpp"
+    exercise_7_22_c_list
+    "7-22-C.cpp"
+    "EventLoop.cpp"
+    "HeuristicBoard.cpp"
+    "KnightBoard.cpp"
 )
 
 if(UNIX)
@@ -20,15 +22,15 @@ if(WIN32)
 endif()
 
 set_source_files_properties(
-    "7-22-B.cpp"
+    ${exercise_7_22_c_list}
+
     PROPERTIES
     COMPILE_FLAGS
     "${_macro_prefix}PRINT_DEBUG_INFO"
 )
 unset(_macro_prefix)
 
-add_multiple_executable_list(${exercises_executable_list})
-add_subdirectory("7-22-C")
+add_executable_list(${exercise_7_22_c_list})
 
 # target_link_libraries(main ${CMAKE_THREAD_LIBS_INIT})
 # install(TARGETS main

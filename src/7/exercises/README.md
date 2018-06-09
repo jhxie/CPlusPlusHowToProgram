@@ -21,7 +21,7 @@ To show usage information on [7-22-B](./7-22-B.cpp):
 ```
 
 ## Part C
-To see usage information on [7-22-C](./7-22-C.cpp):
+To see usage information on [7-22-C](./7-22-C/7-22-C.cpp):
 ```
 7-22-C -h
 ```
@@ -41,6 +41,15 @@ command:
 ```
 7-22-C -i heuristics.txt -t 5
 ```
+
+To see whether the heuristics based probing algorithm finishes for each chessboard
+position:
+```
+7-22-C -o tour.txt -b
+```
+The *tour.txt* that comes after the *-o* flag stands for the file name used to record
+the completion status for each chessboard position; the *-b* flag denotes the
+program currently runs in *batch* heuristics mode.
 
 ## Credits
 The two sample tours are given by *Denver* on this [site][KNT].

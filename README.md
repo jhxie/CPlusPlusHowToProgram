@@ -1,9 +1,9 @@
-<a href="https://en.wikipedia.org/wiki/Xerox_Alto"><img align="center" src="img/banner.png" alt="Banner"></a>
+![Banner](img/banner.png)
 
 ## Overview
 Source code written during the learning path of [C++ How to Program][HTP]
-book; an overview of the build environment for the continuous integration
-service can be viewed on this [page][APPVEYOR].
+book; an overview of the build environment for the *AppVeyor* continuous
+integration service can be viewed on this [page][APPVEYOR].
 
 | Operating System | OS Version       | Targeted Toolchain | Build Status |
 |:---------------- |:----------------:|:------------------ |:------------:|
@@ -62,7 +62,7 @@ New → Paste the Absolute Path that Contains the 'dot' Executable → OK
 The included diagrams for documentation purposes would be rendered in *PNG*
 format and reside in *doc* subdirectory of the *build* directory.
 
-**Ubuntu** (17.10)  
+**Ubuntu** (Docker Tag: rolling)  
 Change working directory to where the source directory resides and then issue:
 ```bash
 mkdir build
@@ -70,7 +70,7 @@ pushd !$
 cmake .. && make -j$(nproc)
 ```
 
-**Windows 10**  
+**Windows** (10)  
 If Visual Studio 2017 is installed, the project can be directly imported into
 the *IDE* without generating solution or project files by following the
 following steps:
@@ -98,7 +98,7 @@ installed version of the *IDE* should be generated inside *build* sub-directory;
 simply open this file and build it with the *IDE* as usual.
 
 ## Getting Started
-**Ubuntu** (17.10)  
+**Ubuntu** (Docker Tag: rolling)  
 To run the compiled executables, issue commands similar to the following
 (assume the current working directory is *build*):
 ```bash
@@ -112,7 +112,7 @@ to the original directory:
 cd -2
 ```
 
-**Windows 10**  
+**Windows** (10)  
 If Visual Studio 2017 is being used, right click the translation unit that
 needs to be executed in *Solution Explorer* and select *Debug*. Otherwise, follow
 the usual debug instructions as it requires in the relevant version.
@@ -121,13 +121,14 @@ the usual debug instructions as it requires in the relevant version.
 * The [DownloadProject][DOWNPRO] *CMake* module is used to download and
 statically link [Google Test][GTEST] at project configure time.
 * The computer that appears on the *C++ How To Program* banner is loosely modeled
-after an *Xerox Alto*.
+after an Xerox [Alto][ALTO] with *InkScape*.
 
 ## License
 Copyright © 2017 - 2018 Jiahui Xie  
 Licensed under the [BSD 2-Clause License][BSD2].  
 Distributed under the [BSD 2-Clause License][BSD2].  
 
+[ALTO]: https://en.wikipedia.org/wiki/Xerox_Alto
 [APPVEYOR]: https://www.appveyor.com/docs/build-environment/
 [BSD2]: https://opensource.org/licenses/BSD-2-Clause
 [BST]: https://www.boost.org/

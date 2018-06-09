@@ -22,50 +22,6 @@
  *
  * Fig. 7.25 The eight possible moves of the knight
  *
- * C.
- * After attempting to write and run a Knight’s Tour program, you’ve probably
- * developed some valuable insights. We’ll use these to develop a heuristic (or
- * strategy) for moving the knight. Heuristics do not guarantee success, but a
- * carefully developed heuristic greatly improves the chance of success. You
- * may have observed that the outer squares are more troublesome than the
- * squares nearer the center of the board. In fact, the most troublesome, or
- * inaccessible, squares are the four corners.
- *
- * Intuition may suggest that you should attempt to move the knight to the most
- * troublesome squares first and leave open those that are easiest to get to,
- * so when the board gets congested near the end of the tour, there will be a
- * greater chance of success.
- *
- * We may develop an “accessibility heuristic” by classifying each square
- * according to how accessible it’s then always moving the knight to the square
- * (within the knight’s L-shaped moves, of course) that’s least accessible. We
- * label a two-dimensional array accessibility with numbers indicating from how
- * many squares each particular square is accessible. On a blank chessboard,
- * each center square is rated as 8, each corner square is rated as 2 and the
- * other squares have accessibility numbers of 3, 4 or 6 as follows:
- *
- * 2 3 4 4 4 4 3 2
- * 3 4 6 6 6 6 4 3
- * 4 6 8 8 8 8 6 4
- * 4 6 8 8 8 8 6 4
- * 4 6 8 8 8 8 6 4
- * 4 6 8 8 8 8 6 4
- * 3 4 6 6 6 6 4 3
- * 2 3 4 4 4 4 3 2
- *
- * Now write a version of the Knight’s Tour program using the accessibility
- * heuristic. At any time, the knight should move to the square with the lowest
- * accessibility number. In case of a tie, the knight may move to any of the
- * tied squares. Therefore, the tour may begin in any of the four corners.
- * [Note: As the knight moves around the chessboard, your program should reduce
- * the accessibility numbers as more and more squares become occupied. In this
- * way, at any given time during the tour, each available square’s
- * accessibility number will remain equal to precisely the number of squares
- * from which that square may be reached.] Run this version of your program.
- * Did you get a full tour? Now modify the program to run 64 tours, one
- * starting from each square of the chessboard. How many full tours did you
- * get?
- *
  * D.
  * Write a version of the Knight’s Tour program which, when encountering a tie
  * between two or more squares, decides what square to choose by looking ahead
@@ -570,6 +526,9 @@ public:
      * For the current board 'position', probe and return the move number
      * associated with the lowest accessibility score reachable from 'position'
      * that is not zero.
+     *
+     * In case of a tie among two or more reachable 'position's, look ahead
+     * from the tied 'position's recursively.
      *
      * @param position Constant lvalue reference of current knight position.
      * @param knight Constant lvalue reference of a 'Knight' object.
